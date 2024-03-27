@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--StAuth10222: I Henri Saing, 000132162 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else.-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <title>Henri Saing</title>
+  <style>
+    #app{
+        max-height:750px;
+        max-width:750px;
+        display:block;
+        /* margin:auto; */
+        position:relative;
+        /* background-color:yellow; */
+        margin:auto;
+        padding:0;
+        /* border:2px solid black; */
+        box-sizing: border-box;
+    }
+    #name{
+        display:inline-block;
+        /* background-color: grey; */
+        width: 600px;
+        height: 150px;
+        box-sizing: border-box;
+        position:relative;
+        border-bottom:2px solid black;
+        float:left;
+
+    }
+    #frameworks{
+        display:inline-block;
+        /* background-color: grey; */
+        width: 150px;
+        height: 600px;
+        box-sizing: border-box;
+        position:relative;
+        border-left: 2px solid black;
+        float:right;
+    }
+    #projects{
+        display:inline-block;
+        /* background-color: grey; */
+        width: 150px;
+        height: 600px;
+        box-sizing: border-box;
+        position:relative;
+        float:left;
+        border-right: 2px solid black;
+        text-align: right;
+    }
+    #tech{
+        display:inline-block;
+        /* background-color: grey; */
+        width: 600px;
+        height: 150px;
+        box-sizing: border-box;
+        position:relative;
+        border-top:2px solid black;
+    }
+    #center{
+        display:inline-block;
+        width:450px;
+        height:450px;
+        float:left;
+        border:2px solid black;
+        box-sizing: border-box;
+    }
+
+    .name{
+        font-size:3em;
+        position:absolute;
+        bottom:0px;
+    }
+    .title{
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+    <div id="app">
+        <div id="name">
+            <span class="name">Henri Saing</span>
+        </div>
+
+        <div id="frameworks">
+          <span class="title">Frameworks</span>
+          <div v-for="framework in frameworks">
+            {{framework}}
+          </div>
+        </div>
+
+        <div id="projects">
+          <span class="title">Projects</span>
+          <div v-for="project in projects">
+            {{project.name}}
+          </div>
+        </div>
+
+        <div id="center">mid</div>
+
+        <div id="tech">
+          <span class="title">Technologies</span>
+          <br />
+          <div v-for="tech in technologies" style="display:inline-block;">
+            {{tech}} &nbsp;
+          </div>
+        </div>
+      <!-- <div id="track" v-on:mousemove="move" v-on:event="scroll">
+        <input type="text" v-model="test" placeholder="test" />
+        <button v-on:click="log(); add();">log</button>
+
+        <div v-for="word in words" :key="word.id">
+
+          <div class="word" tabindex="0" :id="word.id"
+            v-on:mousedown.left="leftClick(word.id, $event)" 
+            v-on:mouseup="mouseUp(word.id, $event)"
+            v-on:keyup.up="sizeUp(word.id, $event)"
+            v-on:keyup.down="sizeDown(word.id, $event)"
+            v-on:mouseenter="mouseOver(word.id, $event)"
+            v-on:mouseleave="mouseLeave(word.id, $event)"
+            v-on:wheel="scroll(word.id, $event)"
+            v-on:keyup.delete="deleteWord(word.id, $event)"
+            v-if="word.active"
+            :style="{color: word.color, top: word.y+'px', left: word.x+'px', position: word.position, fontSize: word.fontSize+'em', outline: word.border}">
+              {{word.word}}
+          </div>
+
+        </div>
+      </div> -->
+    </div>
+
+    <script>
+      const App = {
+        data(){
+          return {
+            test: "abc",
+            words: [],
+            projects: [
+            {name: "TCG Generator"},
+            {name: "Bingo Card Maker"},
+            {name: "Mathmagician"},
+            ],
+            frameworks:[
+              'React',
+              'Vue',
+              'Laravel',
+              'Ruby on Rails',
+
+            ],
+            technologies:[
+              'HTML',
+              'CSS',
+              'JavaScript',
+              'JQuery',
+
+            ],
+            counter: 0,
+            selected: 0,
+            active: false,
+          }
+        },
+        methods: {
+            log(){
+                console.log(this.test);
+            },
+            add(){
+                console.log('add');
+                // this.words.push({
+                //   word:this.test, 
+                //   color: "black", 
+                //   x: "", 
+                //   y: "", 
+                //   position: "absolute", 
+                //   fontSize: 1,
+                //   border: "none",
+                //   id: this.counter++,
+                //   active: true,
+                // });
+            },
+        }
+      };
+      Vue.createApp(App).mount('#app');
+    </script>
+</body>
+</html>
