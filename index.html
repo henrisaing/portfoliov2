@@ -173,7 +173,7 @@
       const App = {
         data(){
           return {
-            list: ['list'],
+            list: [],
             projects: [
               {
                 name: "TCG Generator",
@@ -220,7 +220,7 @@
               {
                 name: '.NET',
                 tech: [
-                  'C#', 'SQL Server'
+                  'C#', 'SQLserver', 'VisualBasic',
                 ],
               },
               {
@@ -247,17 +247,9 @@
               'Python', 'C#', 'VisualBasic', 'PHP', 'MySQL', 'SQLite', 'PostgreSQL', 'SQLserver', 'Discord', 'Node', 'Express'
 
             ],
-            selected: '',
-            active: false,
           }
         },
         methods: {
-            log(){
-                console.log('this.test');
-            },
-            add(){
-                console.log('add');
-            },
             highlight(type, name){
               this.list = [];
               if(type == 'framework'){
@@ -286,7 +278,6 @@
                     }
                   }
                 }
-                console.log('proj hit');
               }else if(type == 'tech'){
                 this.list = this.list.concat([name]);
 
@@ -302,10 +293,7 @@
                     }
                   }
                 }
-
-                console.log('tech hit');
               }
-              console.log(this.list);
             },
         }
       };
