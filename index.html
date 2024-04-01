@@ -82,6 +82,9 @@
     .title{
       font-size: 1.5em;
     }
+    .yellow{
+      background-color:rgb(211, 211, 211);
+    }
   </style>
 </head>
 <body>
@@ -98,14 +101,26 @@
         <div id="frameworks">
           <span class="title">Frameworks</span>
           <div v-for="framework in frameworks" v-on:click="highlight('framework', framework.name)">
-            {{framework.name}}
+            <div v-if="list.includes(framework.name)" class="yellow">
+              {{framework.name}} &nbsp;
+            </div>
+            <div v-else>
+              {{framework.name}} &nbsp;
+            </div>
+            
           </div>
         </div>
 
         <div id="projects">
           <span class="title">Projects</span>
           <div v-for="project in projects" v-on:click="highlight('project', project.name)">
-            {{project.name}}
+            <div v-if="list.includes(project.name)" class="yellow">
+              {{project.name}} &nbsp;
+            </div>
+            <div v-else>
+              {{project.name}} &nbsp;
+            </div>
+            
           </div>
         </div>
 
@@ -115,7 +130,13 @@
           <span class="title">Technologies</span>
           <br />
           <div v-for="tech in technologies" style="display:inline-block;" v-on:click="highlight('tech', tech)">
-            {{tech}} &nbsp;
+            <div v-if="list.includes(tech)" class="yellow">
+              {{tech}} &nbsp;
+            </div>
+            <div v-else>
+              {{tech}} &nbsp;
+            </div>
+            
           </div>
         </div>
       <!-- <div id="track" v-on:mousemove="move" v-on:event="scroll">
@@ -230,28 +251,53 @@
             },
             add(){
                 console.log('add');
-                // this.words.push({
-                //   word:this.test, 
-                //   color: "black", 
-                //   x: "", 
-                //   y: "", 
-                //   position: "absolute", 
-                //   fontSize: 1,
-                //   border: "none",
-                //   id: this.counter++,
-                //   active: true,
-                // });
             },
             highlight(type, name){
-              // console.log(type + name);
-              // console.log(this);
               this.list = [];
-              for(let i = 0; i < this.frameworks.length; i++){
-                if(name == this.frameworks[i].name){
-                  console.log('framehit'+name);
-                  this.list = this.list.concat([name]);
-                  this.list = this.list.concat(this.frameworks[i].tech);
+              if(type == 'framework'){
+                for(let i = 0; i < this.frameworks.length; i++){
+                  if(name == this.frameworks[i].name){
+                    console.log('framehit'+name);
+                    this.list = this.list.concat([name]);
+                    this.list = this.list.concat(this.frameworks[i].tech);
+                  }
                 }
+                for(let i = 0; i < this.projects.length; i++){
+                  if(name == this.projects[i].frame[0]){
+                    this.list = this.list.concat(this.projects[i].name);
+                  }
+                }
+              }else if(type == 'project'){
+                for(let i = 0; i < this.projects.length; i++){
+                  if(name == this.projects[i].name){
+                    this.list = this.list.concat([name]);
+                    this.list = this.list.concat(this.projects[i].frame);
+
+                    for(let ii = 0; ii < this.frameworks.length; ii++){
+                      if(this.projects[i].frame[0] == this.frameworks[ii].name){
+                        this.list = this.list.concat(this.frameworks[ii].tech);
+                      }
+                    }
+                  }
+                }
+                console.log('proj hit');
+              }else if(type == 'tech'){
+                this.list = this.list.concat([name]);
+
+                for(let i = 0; i < this.frameworks.length; i++){
+                  if(this.frameworks[i].tech.includes(name)){
+                    this.list = this.list.concat(this.frameworks[i].name);
+                  }
+                }
+                for(let i = 0; i < this.projects.length; i++){
+                  for(let ii = 0; ii < this.list.length; ii++){
+                    if(this.list[ii] == this.projects[i].frame[0]){
+                      this.list = this.list.concat(this.projects[i].name);
+                    }
+                  }
+                }
+
+                console.log('tech hit');
               }
               console.log(this.list);
             },
