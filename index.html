@@ -98,9 +98,9 @@
         <div id="name">
             <span class="name">Henri Saing</span>
             <span style="position:absolute;bottom:0;right:0;margin: 6px;text-align: right;">
-              <a href="assets/HSaingResume03-16-2024.pdf">resume</a> <br/>
+              <a href="assets/HSaingResume03-16-2024.pdf" target="_blank">resume</a> <br/>
+              <a href="https://github.com/henrisaing" target="_blank">github.com/henrisaing</a> <br/>
               henri.saing@gmail.com <br/>
-              github.com/henrisaing <br/>
             </span>
         </div>
 
@@ -191,18 +191,26 @@
                 name: "Mathmagician",
                 frame: ['React'],
               },
+              {
+                name: "BingoBot",
+                frame: ['Node', 'Discord', 'JavaScript', 'Axios'],
+              },
+              {
+                name: "Auctioneer",
+                frame: ['JQuery', 'HTML', 'CSS', 'Node', 'Express', 'Websockets', 'JavaScript'],
+              }
             ],
             frameworks:[
-              {
-                name: 'React', 
-                tech: [
-                  'JavaScript', 'HTML', 'CSS', 'Node', 'Express', 'SQLite',
-                ],
-              },
               {
                 name: 'Vue',
                 tech: [
                   'JavaScript', 'HTML', 'CSS',
+                ],
+              },
+              {
+                name: 'React', 
+                tech: [
+                  'JavaScript', 'HTML', 'CSS', 'Node', 'Express', 'SQLite',
                 ],
               },
               {
@@ -218,12 +226,6 @@
                 ],
               },
               {
-                name: '.NET',
-                tech: [
-                  'C#', 'SQLserver', 'VisualBasic',
-                ],
-              },
-              {
                 name: 'Ruby on Rails',
                 tech: [
                   'JavaScript', 'HTML', 'CSS', 'Ruby', 'PostgreSQL',
@@ -236,6 +238,12 @@
                 ],
               },
               {
+                name: '.NET',
+                tech: [
+                  'C#', 'SQLserver', 'VisualBasic',
+                ],
+              },
+              {
                 name: 'Cake',
                 tech: [
                   'JavaScript', 'HTML', 'CSS', 'PHP'
@@ -244,8 +252,7 @@
             ],
             technologies:[
               'HTML', 'CSS', 'JavaScript', 'JQuery', 'Websockets', 'Bootstrap', 'MaterialUi', 'Java', 'Ruby',
-              'Python', 'C#', 'VisualBasic', 'PHP', 'MySQL', 'SQLite', 'PostgreSQL', 'SQLserver', 'Discord', 'Node', 'Express'
-
+              'Python', 'C#', 'VisualBasic', 'PHP', 'MySQL', 'SQLite', 'PostgreSQL', 'SQLserver', 'OracleDB', 'Discord', 'Node', 'Express', 'Axios',
             ],
           }
         },
@@ -255,7 +262,6 @@
               if(type == 'framework'){
                 for(let i = 0; i < this.frameworks.length; i++){
                   if(name == this.frameworks[i].name){
-                    console.log('framehit'+name);
                     this.list = this.list.concat([name]);
                     this.list = this.list.concat(this.frameworks[i].tech);
                   }
