@@ -34,7 +34,7 @@
         display:inline-block;
         /* background-color: grey; */
         width: 150px;
-        height: 600px;
+        height: 450px;
         box-sizing: border-box;
         position:relative;
         border-left: 2px solid black;
@@ -91,60 +91,70 @@
     #projects div:hover, #frameworks div:hover, #tech div:hover{
       background-color: yellow;
     }
+    .box150x150{
+      display: inline-block;
+      width: 150px;
+      height:150px;
+      box-sizing: border-box;
+      border-bottom:2px solid black;
+      border-left:2px solid black;
+      float:left;
+    }
   </style>
 </head>
 <body>
     <div id="app">
-        <div id="name">
-            <span class="name">Henri Saing</span>
-            <span style="position:absolute;bottom:0;right:0;margin: 6px;text-align: right;">
-              <a href="assets/HSaingResume03-16-2024.pdf" target="_blank">resume</a> <br/>
-              <a href="https://github.com/henrisaing" target="_blank">github.com/henrisaing</a> <br/>
-              henri.saing@gmail.com <br/>
-            </span>
-        </div>
-
-        <div id="frameworks">
-          <span class="title">Frameworks</span>
-          <div v-for="framework in frameworks" v-on:click="highlight('framework', framework.name)">
-            <div v-if="list.includes(framework.name)" class="yellow">
-              {{framework.name}} &nbsp;
-            </div>
-            <div v-else>
-              {{framework.name}} &nbsp;
-            </div>
-            
+      <div id="name">
+          <span class="name">Henri Saing</span>
+          <span style="position:absolute;bottom:0;right:0;margin: 6px;text-align: right;">
+            <a href="assets/HSaingResume03-16-2024.pdf" target="_blank">resume</a> <br/>
+            <a href="https://github.com/henrisaing" target="_blank">github.com/henrisaing</a> <br/>
+            henri.saing@gmail.com <br/>
+          </span>
+      </div>
+      <div class="box150x150"></div>
+      <div id="frameworks">
+        
+        <span class="title">Frameworks</span>
+        <div v-for="framework in frameworks" v-on:click="highlight('framework', framework.name)">
+          <div v-if="list.includes(framework.name)" class="yellow">
+            {{framework.name}} &nbsp;
           </div>
-        </div>
-
-        <div id="projects">
-          <span class="title">Projects</span>
-          <div v-for="project in projects" v-on:click="highlight('project', project.name)">
-            <div v-if="list.includes(project.name)" class="yellow">
-              {{project.name}} &nbsp;
-            </div>
-            <div v-else>
-              {{project.name}} &nbsp;
-            </div>
-            
+          <div v-else>
+            {{framework.name}} &nbsp;
           </div>
+          
         </div>
+      </div>
 
-        <div id="center">mid</div>
-
-        <div id="tech">
-          <span class="title">Technologies</span>
-          <br />
-          <div v-for="tech in technologies" style="display:inline-block;" v-on:click="highlight('tech', tech)">
-            <div v-if="list.includes(tech)" class="yellow">
-              {{tech}} &nbsp;
-            </div>
-            <div v-else>
-              {{tech}} &nbsp;
-            </div>
-            
+      <div id="projects">
+        <span class="title">Projects</span>
+        <div v-for="project in projects" v-on:click="highlight('project', project.name)">
+          <div v-if="list.includes(project.name)" class="yellow">
+            {{project.name}} &nbsp;
           </div>
+          <div v-else>
+            {{project.name}} &nbsp;
+          </div>
+          
         </div>
+      </div>
+
+      <div id="center">mid</div>
+
+      <div id="tech">
+        <span class="title">Technologies</span>
+        <br />
+        <div v-for="tech in technologies" style="display:inline-block;" v-on:click="highlight('tech', tech)">
+          <div v-if="list.includes(tech)" class="yellow">
+            {{tech}} &nbsp;
+          </div>
+          <div v-else>
+            {{tech}} &nbsp;
+          </div>
+          
+        </div>
+      </div>
       <!-- <div id="track" v-on:mousemove="move" v-on:event="scroll">
         <input type="text" v-model="test" placeholder="test" />
         <button v-on:click="log(); add();">log</button>
